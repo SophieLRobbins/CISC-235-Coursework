@@ -19,9 +19,9 @@ def binary_search(arr, x):
     while left <= right:
         mid = (left + right) // 2
         if arr[mid] == x:
-            return True
+            return "Yes"
         elif arr[mid] < x:
             left = mid + 1
         else:
             right = mid - 1
-    return False
+    return "No"

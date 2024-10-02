@@ -8,5 +8,6 @@
 def linear_search(S, x):
     for item in S:
         if item == x:
-            return True
-    return False
+            return "Yes"
+    return "No"
+

@@ -30,15 +30,15 @@ def other_values(S, n):
     return not_in_S
 
 
-
 def find_k(n):
-    max_k = 1000  # You can adjust this limit as needed
+    max_k = 1000000  # You can adjust this limit as needed
     linear_times, binary_times = run_experiment(n, max_k)
 
     for k in range(max_k):
         if binary_times[k] < linear_times[k]:
             return k + 1  # Return the value of k*
     return None  # If never found
+
 
 def run_experiment(n, max_k, S, not_in_S):
     generate(n)
@@ -59,9 +59,20 @@ def run_experiment(n, max_k, S, not_in_S):
     # Measure Algorithm B
     start = time.time()
     for x in targets:
-        binary_search(sorted_S, x)
+        binary_search(S, x)
     end = time.time()
     binary_times.append(end - start)
 
     return linear_times, binary_times
 
+def main():
+    n_values = [1000, 2000, 5000, 10000]
+    results = {}
+
+    for n in n_values:
+        k_star = find_k(n)
+        results[n] = k_star
+
+    print(results)
+
+main()
